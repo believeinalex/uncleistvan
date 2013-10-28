@@ -3,15 +3,10 @@
 angular.module('uncleistvanApp', [
   'ngCookies',
   'ngResource',
-  'ngSanitize'
-])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  'ngSanitize',
+  '$strap.directives'
+]).config(function ($routeProvider) {
+    $routeProvider.when('/login', {templateUrl: 'views/login.html', controller: 'LoginCtrl'});
+    $routeProvider.when('/home', {templateUrl: 'views/home.html', controller: 'HomeCtrl'});
+    $routeProvider.otherwise({redirectTo: '/login'});
   });

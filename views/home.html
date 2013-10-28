@@ -1,0 +1,35 @@
+<div class="home">
+	<div class="nav">
+		<div class="col center">
+			<a href="#" class="link" ng-click="logout()">Logout</a>
+		</div>
+	</div>
+	<div class="people clearfix">
+		<div ng-repeat="user in users">
+			<div class="person col">
+				<img src="img/avatars/{{user.name}}.png">
+				<hr/>
+				<h1>{{user.name}}</h1>
+			</div>
+		</div>
+		<div class="col events">
+			<h1>Events</h1>
+			<ul ng-repeat="event in events">
+				<li class="event">
+					<span class="name">{{event.name}} ({{event.format}})</span><span class="date"> - {{event.date}}</span>
+					<div class="attending">
+
+						<img ng-class="{you: name == user.name, going: isInEvent(user,event), going: isInEvent(user,event)}" src="img/avatars/{{user.name}}.png" width="20" height="20" ng-repeat="user in users" ng-click="toggleAttending(user, event)">
+						<span id="newevent" ng-click="addingEvent=!addingEvent">New</span>
+						<div id="event" ng-show="addingEvent">
+							<input type="text" ng-model="eventName" placeholder="Event Name">
+							<input type="text" ng-model="eventDate" placeholder="Event Date" data-date-format="mm/dd/yyyy" bs-datepicker>
+							<input type="text" ng-model="eventFormat" placeholder="Event Format">
+							<span ng-click="submitEvent()">Add Event</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
